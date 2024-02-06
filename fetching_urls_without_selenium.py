@@ -2,9 +2,6 @@ import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 
-origin_url = input('Enter the url that you want to crawl: ')
-
-#function to get all the links
 def get_all_links(url):
     try:
         response = requests.get(url)
@@ -25,5 +22,12 @@ def get_all_links(url):
 
     return links
 
-domains_data = get_all_links(origin_url)
-print(f'Here is the data, {domains_data}')
+if __name__ == "__main__":
+    # Example usage:
+    url_to_crawl = input("Enter the URL to crawl: ")
+    crawled_links = get_all_links(url_to_crawl)
+    with open('links.txt','w') as fh:
+        fh.writelines(crawled_links)
+    print("\nLinks found on the page:")
+    for link in crawled_links:
+        print(link)
