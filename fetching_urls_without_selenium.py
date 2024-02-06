@@ -23,11 +23,8 @@ def get_all_links(url):
     return links
 
 if __name__ == "__main__":
-    # Example usage:
     url_to_crawl = input("Enter the URL to crawl: ")
     crawled_links = get_all_links(url_to_crawl)
-    with open('links.txt','w') as fh:
-        fh.writelines(crawled_links)
-    print("\nLinks found on the page:")
-    for link in crawled_links:
-        print(link)
+    with open('links_without_selenium.txt','w') as fh:
+        fh.write('\n'.join(crawled_links))
+    print(crawled_links)
